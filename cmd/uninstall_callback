@@ -1,0 +1,6 @@
+#!/bin/bash
+ACTION="$WIZARD_data_action"
+if [ "$ACTION" = "delete" ]; then
+    rm -rf "${TRIM_PKGETC}/data"
+fi
+exit 0

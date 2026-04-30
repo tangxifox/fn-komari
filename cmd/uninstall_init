@@ -1,0 +1,3 @@
+#!/bin/bash
+rm -rf ${TRIM_PKGETC}/data
+exit 0

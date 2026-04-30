@@ -1,0 +1,16 @@
+[
+  {
+    "stepTitle": "设置密码",
+    "items": [
+      {
+        "type": "password",
+        "field": "wizard_password",
+        "label": "设置密码",
+        "rules": [],
+        "options": [],
+        "helpText": "注意：此操作将直接修改数据库中的管理员密码，请谨慎操作。",
+        "initValue": ""
+      }
+    ]
+  }
+]

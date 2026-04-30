@@ -1,0 +1,7 @@
+{
+  "username": "komari",
+  "groupname": "komari",
+  "defaults": {
+    "run-as": "package"
+  }
+}

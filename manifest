@@ -1,0 +1,16 @@
+appname=komari
+version=1.1.9
+display_name=komari
+desc="""Komari 是一款轻量级服务器监控工具<br>项目地址：<a href='https://github.com/komari-monitor' target='_blank'>https://github.com/komari-monitor</a>"""
+platform=arm
+source=thirdparty
+maintainer=Komari Moniter
+maintainer_url=https://github.com/komari-monitor
+distributor=tangxifox
+distributor_url=https://github.com/tangxifox
+ctl_stop=true
+desktop_uidir=ui
+desktop_applaunchname=komari.Application
+service_port=25774
+checkport=true
+disable_authorization_path=false

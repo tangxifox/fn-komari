@@ -1,0 +1,22 @@
+{
+  "data-share": {
+    "shares": [
+      {
+        "name": "komari",
+        "permission": {
+          "rw": [
+            "komari"
+          ]
+        }
+      },
+      {
+        "name": "komari/data",
+        "permission": {
+          "rw": [
+            "komari"
+          ]
+        }
+      }
+    ]
+  }
+}

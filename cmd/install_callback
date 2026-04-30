@@ -1,0 +1,17 @@
+#!/bin/bash
+case "$(uname -m)" in
+    x86_64)
+        ARCH="amd64"
+        ;;
+    aarch64|arm64)
+        ARCH="arm64"
+        ;;
+    *)
+        exit 1
+        ;;
+esac
+cd "${TRIM_PKGETC}" || exit 1
+[ -z "${wizard_password}" ] && exit 0
+${TRIM_APPDEST}/bin/komari-linux-${ARCH} chpasswd -p "${wizard_password}" -d data/komari.db
+unset wizard_password
+exit 0

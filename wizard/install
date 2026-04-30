@@ -1,0 +1,16 @@
+[
+  {
+    "stepTitle": "设置密码",
+    "items": [
+      {
+        "type": "password",
+        "field": "wizard_password",
+        "label": "设置密码",
+        "rules": [],
+        "options": [],
+        "helpText": "请设置 Komari 管理员密码。留空表示使用默认密码或不修改。",
+        "initValue": ""
+      }
+    ]
+  }
+]

@@ -1,0 +1,5 @@
+#!/bin/bash
+mkdir -p "${TRIM_PKGETC}/data"
+chmod +x "${TRIM_APPDEST}/bin/"*
+chown -R komari:komari "${TRIM_APPDEST}/bin"
+chown -R komari:komari "${TRIM_PKGETC}/data"
