@@ -31,30 +31,27 @@ done
 
 [[ ${#arches[@]} -eq 0 ]] && { echo "缺少架构参数"; exit 1; }
 
+# 创建目录
 mkdir -p app/bin data
 
-# 获取 GitHub 最新 tag_name
-version=$(curl -sL https://api.github.com/repos/komari-monitor/komari/releases/latest |
-          grep tag_name | head -1 | cut -d'"' -f4)
+# 获取 GitHub 最新版本
+version=$(curl -sL https://api.github.com/repos/komari-monitor/komari/releases/latest \
+  | grep '"tag_name"' \
+  | cut -d'"' -f4 \
+  | sed 's/^v//')
+
+echo "远程版本: $version"
 
 # 更新 manifest 版本
 sed -i "s|^version=.*|version=$version|" manifest
 
-# 下载或跳过
+# 强制清理 app/bin 目录，确保每次都重新下载
+echo "清理 app/bin 目录..."
+rm -f app/bin/*
+
+# 下载
 for arch in "${arches[@]}"; do
   bin="app/bin/komari-linux-$arch"
-
-  if [[ -f "$bin" ]]; then
-    local_ver=$("$bin" -h 2>&1 | head -n 1 | sed -E 's/.*Komari Monitor ([0-9.]+).*/\1/')
-
-    if [[ "$local_ver" == "$version" ]]; then
-      echo "$arch 本地版本已为 $version，跳过下载"
-      rmdir ./data/theme;rmdir ./data
-      chmod +x "$bin"
-      continue
-    fi
-  fi
-
   url="https://github.com/komari-monitor/komari/releases/download/$version/komari-linux-$arch"
   [[ -n "$mirror" ]] && url="$mirror/$url"
 
@@ -64,7 +61,9 @@ for arch in "${arches[@]}"; do
 done
 
 # fnpack 构建
+echo "fnpack build..."
 fnpack build
+
 mv komari.fpk "komari-$version-$out.fpk"
 
 echo "构建完成：$(pwd)/komari-$version-$out.fpk"
